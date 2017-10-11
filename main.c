@@ -50,7 +50,7 @@ int main()
                 contra_bajaContratacionPorCuit(listaContrataciones,listaPantallas,LEN_CONTRATACIONES,LEN_PANTALLAS);
                 break;
             case 7:
-                inf_listarImportePantallasContratadas(listaPantallas,listaContrataciones,LEN_PANTALLAS,LEN_CONTRATACIONES);
+                inf_listarImportePantallasContratadasPorCuit(listaPantallas,listaContrataciones,LEN_PANTALLAS,LEN_CONTRATACIONES);
                 break;
             case 8:
                 inf_listarContrataciones(listaPantallas,listaContrataciones,LEN_PANTALLAS,LEN_CONTRATACIONES);

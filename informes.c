@@ -6,34 +6,59 @@
 #include "informes.h"
 #include "validar.h"
 
+/** \brief Imprime una lista de pantallas cargadas
+ *
+ * \param array de estructura pantalla
+ * \param  longitud del array
+ * \return -1 error en parametros | 0 OK
+ *
+ */
 
-void inf_listarPantallas (sPantalla* listaPantallas,int lenListaPantallas)
+
+int inf_listarPantallas (sPantalla* listaPantallas,int lenListaPantallas)
 {
+    int retorno = -1;
     int index;
     int contadorPantallas = 0;
     printf("*************************************************************\n");
     printf("************************* PANTALLAS *************************\n");
     printf("*************************************************************\n");
-    for (index=0; index<lenListaPantallas; index++)
+    if(listaPantallas != NULL && lenListaPantallas > 0 )
     {
-        if(listaPantallas[index].flagOcupado == PANTALLA_OCUPADO)
+        for (index=0; index<lenListaPantallas; index++)
         {
-            contadorPantallas++;
-            printf("\nID Pantalla: %d\nNombre: %s\nPrecio: %.2f\nDireccion: %s\nTipo (0-LCD // 1-LED): %d\n",listaPantallas[index].id,
-                   listaPantallas[index].nombrePantalla,
-                   listaPantallas[index].precio,
-                   listaPantallas[index].direccion,
-                   listaPantallas[index].tipoPantalla);
+            if(listaPantallas[index].flagOcupado == PANTALLA_OCUPADO)
+            {
+                contadorPantallas++;
+                printf("\nID Pantalla: %d\nNombre: %s\nPrecio: %.2f\nDireccion: %s\nTipo (0-LCD // 1-LED): %d\n",listaPantallas[index].id,
+                       listaPantallas[index].nombrePantalla,
+                       listaPantallas[index].precio,
+                       listaPantallas[index].direccion,
+                       listaPantallas[index].tipoPantalla);
+                       retorno = 0;
+            }
         }
+        printf("\n*************************************************************\n");
+        printf("*************************************************************\n");
+        if(contadorPantallas == 0)
+        {
+            printf("\nNo hay ninguna pantalla cargada en el sistema.\n");
+        }
+
     }
-    printf("\n*************************************************************\n");
-    printf("*************************************************************\n");
-    if(contadorPantallas == 0)
-    {
-        printf("\nNo hay ninguna pantalla cargada en el sistema.\n");
-    }
+return retorno;
 }
 
+/** \brief Imprime una lista de pantallas cargadas que tienen contrataciones a partir de un CUIT
+ *
+ * \param array de estructura pantalla
+ * \param array de estructura contrataciones
+ * \param  longitud del array de estructura pantalla
+ * \param  longitud del array de estructura contrataciones
+ * \param array de char CUIT del usuario
+ * \return -1 error en parametros | 0 OK
+ *
+ */
 int inf_listarPantallasContratadas (sPantalla* listaPantallas,sContrataciones* listaContrataciones, int lenListaPantallas,int lenListaContrataciones,char* cuit)
 {
     int retorno = -1;
@@ -128,7 +153,7 @@ int inf_listarContrataciones (sPantalla* listaPantallas,sContrataciones* listaCo
     return retorno;
 }
 
-int inf_listarImportePantallasContratadas (sPantalla* listaPantallas,sContrataciones* listaContrataciones, int lenListaPantallas,int lenListaContrataciones)
+int inf_listarImportePantallasContratadasPorCuit (sPantalla* listaPantallas,sContrataciones* listaContrataciones, int lenListaPantallas,int lenListaContrataciones)
 {
     int retorno = -1;
     int indexContrataciones;
@@ -340,7 +365,7 @@ int inf_listarClientesConMayorImporte (sPantalla* listaPantallas,sContrataciones
         }
         float bufferMayor = 0;
         int indexMayor;
-        for (i=0;i<contadorClientes;i++)
+        for (i=0; i<contadorClientes; i++)
         {
             if (arrayAcumuladorImporte[i] > bufferMayor)
             {

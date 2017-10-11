@@ -118,3 +118,52 @@
 	<string.h>
 	"validar.h"
 
+1507730250 source:c:\users\matias.camara\desktop\mariano\github\1erparcial-terminado-\contrataciones.c
+	<stdio.h>
+	<stdlib.h>
+	"Contrataciones.h"
+	<string.h>
+	"validar.h"
+	"Pantalla.h"
+	"informes.h"
+
+1507730250 c:\users\matias.camara\desktop\mariano\github\1erparcial-terminado-\contrataciones.h
+	"Pantalla.h"
+
+1507730250 c:\users\matias.camara\desktop\mariano\github\1erparcial-terminado-\pantalla.h
+
+1507730250 c:\users\matias.camara\desktop\mariano\github\1erparcial-terminado-\validar.h
+
+1507754880 c:\users\matias.camara\desktop\mariano\github\1erparcial-terminado-\informes.h
+
+1507729836 source:c:\users\matias.camara\desktop\mariano\github\1erparcial-terminado-\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Pantalla.h"
+	"Contrataciones.h"
+	"validar.h"
+	"informes.h"
+
+1507730250 source:c:\users\matias.camara\desktop\mariano\github\1erparcial-terminado-\pantalla.c
+	<stdio.h>
+	<stdlib.h>
+	"Pantalla.h"
+	"Contrataciones.h"
+	<string.h>
+	"validar.h"
+
+1507754799 source:c:\users\matias.camara\desktop\mariano\github\1erparcial-terminado-\informes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Pantalla.h"
+	"Contrataciones.h"
+	"informes.h"
+	"validar.h"
+
+1507754433 source:c:\users\matias.camara\desktop\mariano\github\1erparcial-terminado-\validar.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validar.h"
+

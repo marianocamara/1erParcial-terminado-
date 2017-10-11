@@ -68,7 +68,7 @@ int val_getNombre(char* destino, char* mensaje,char* mensajeError,int intentos,i
 
 /**
  * \brief Verifica si el valor recibido contiene letras
- * \param str Array con la cadena a ser analizada
+ * \param char buffer con la cadena a ser analizada
  * \return 0 si solo contiene letras y -1 error
  *
  */
@@ -89,6 +89,14 @@ int val_validarNombre(char* buffer)
     return retorno;
 }
 
+/** \brief Obtiene input usuario (myFgets) que deben ser solo letras y/o numeros, y un punto (validarNombreVideo)
+ * \param array de caracteres del destino
+ * \param mensaje con indicaciones para el usuario
+ * \param mensaje de error
+ * \param cantidad oportunidades que el usuario tiene para ingresar los datos correctamente
+ * \param longitud del array destino
+ * \return -1 ingreso erroneo luego de los intentos o error d parametros -- 0 ok
+ */
 int val_getNombreVideo(char* destino, char* mensaje,char* mensajeError,int intentos,int limite)
 {
 
@@ -118,6 +126,13 @@ int val_getNombreVideo(char* destino, char* mensaje,char* mensajeError,int inten
     return retorno;
 }
 
+/**
+ * \brief Verifica si el valor recibido contiene los caracteres aceptados en el nombre de un archivo de video, letras, numeros y un punto
+ * \param char buffer con la cadena a ser analizada
+ * \return 0 si solo contiene letras, numeros y un punto y -1 error
+ *
+ */
+
 int val_validarNombreVideo(char str[])
 {
     int i=0;
@@ -139,7 +154,7 @@ int val_validarNombreVideo(char str[])
     return 1;
 }
 
-/** \brief Obtiene input usuario (myFgets) que deben ser solo numeros (validarNombre)
+/** \brief Obtiene input usuario (myFgets) que deben ser solo numeros (validarUnsignedInt)
  * \param array de caracteres del destino
  * \param mensaje con indicaciones para el usuario
  * \param mensaje de error
@@ -198,6 +213,14 @@ int val_validarUnsignedInt(char* buffer)
     return retorno;
 }
 
+/** \brief Obtiene CUIT input usuario (myFgets) que deben ser solo numeros (val_esCuit)
+ * \param array de caracteres del destino
+ * \param mensaje con indicaciones para el usuario
+ * \param mensaje de error
+ * \param cantidad oportunidades que el usuario tiene para ingresar los datos correctamente
+ * \param longitud del array destino
+ * \return -1 ingreso erroneo luego de los intentos o error d parametros -- 0 ok
+ */
 int val_getCuit(char* destino, char* mensaje,char* mensajeError,int intentos,int limite)
 {
     int retorno = -1;
@@ -226,6 +249,13 @@ int val_getCuit(char* destino, char* mensaje,char* mensajeError,int intentos,int
     }
     return retorno;
 }
+
+/**
+ * \brief Verifica si el valor recibido contiene solo numeros, y dos guiones (CUIT)
+ * \param str Array con la cadena a ser analizada
+ * \return 0 si solo contiene numeros y -1 error
+ *
+ */
 int val_esCuit(char* buffer)
 {
 
@@ -253,6 +283,14 @@ int val_esCuit(char* buffer)
     return retorno;
 }
 
+/** \brief Obtiene un enterp (myFgets) que deben ser numericos 0 o 1 (val_validarTipoPantalla)
+ * \param array de caracteres del destino
+ * \param mensaje con indicaciones para el usuario
+ * \param mensaje de error
+ * \param cantidad oportunidades que el usuario tiene para ingresar los datos correctamente
+ * \param longitud del array destino
+ * \return -1 ingreso erroneo luego de los intentos o error d parametros -- 0 ok
+ */
 int val_getTipoPantalla(char* destino, char* mensaje,char* mensajeError,int intentos,int limite)
 {
     int retorno = -1;
@@ -282,6 +320,13 @@ int val_getTipoPantalla(char* destino, char* mensaje,char* mensajeError,int inte
     return retorno;
 }
 
+
+/**
+ * \brief Verifica si el valor recibido contiene los numeros 0 o 1
+ * \param str Array con la cadena a ser analizada
+ * \return 0 si es 0 o 1 y -1 error
+ *
+ */
 int val_validarTipoPantalla(char* buffer)
 {
     int i=0;
@@ -300,7 +345,7 @@ int val_validarTipoPantalla(char* buffer)
 
 
 /**
- * \brief Verifica si el valor recibido contiene solo letras y números
+ * \brief Verifica si el valor recibido contiene solo letras, números y espacios
  * \param str Array con la cadena a ser analizada
  * \return 1 si contiene solo espacio o letras y números, y 0 si no lo es
  *
@@ -317,6 +362,14 @@ int val_esAlfaNumerico(char str[])
     return 1;
 }
 
+/** \brief Obtiene un flotante (myFgets) que deben ser numericos aceptando flotantes (val_esNumericoFlotante)
+ * \param array de caracteres del destino
+ * \param mensaje con indicaciones para el usuario
+ * \param mensaje de error
+ * \param cantidad oportunidades que el usuario tiene para ingresar los datos correctamente
+ * \param longitud del array destino
+ * \return -1 ingreso erroneo luego de los intentos o error d parametros -- 0 ok
+ */
 int val_getFloat(char* destino, char* mensaje,char* mensajeError,int intentos,int limite)
 {
     int retorno = -1;
@@ -376,6 +429,15 @@ int val_esNumericoFlotante(char* buffer)
     }
     return 1;
 }
+
+/** \brief Obtiene una direccion, arrat de char (myFgets) que deben ser alfanumericos aceptando espacios (val_esALfaNumerico)
+ * \param array de caracteres del destino
+ * \param mensaje con indicaciones para el usuario
+ * \param mensaje de error
+ * \param cantidad oportunidades que el usuario tiene para ingresar los datos correctamente
+ * \param longitud del array destino
+ * \return -1 ingreso erroneo luego de los intentos o error d parametros -- 0 ok
+ */
 int val_getDireccion(char* destino, char* mensaje,char* mensajeError,int intentos,int limite)
 {
 
