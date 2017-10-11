@@ -1,0 +1,120 @@
+# depslib dependency file v1.0
+1507397920 source:c:\users\matias.camara\desktop\esqueletoparcial2\1erparcial\entidad1.c
+	<stdio.h>
+	<stdlib.h>
+	"entidad1.h"
+	<string.h>
+	"validar.h"
+
+1507397920 c:\users\matias.camara\desktop\esqueletoparcial2\1erparcial\entidad1.h
+
+1507730250 c:\users\matias.camara\desktop\esqueletoparcial2\1erparcial\validar.h
+
+1507398559 source:c:\users\matias.camara\desktop\esqueletoparcial2\1erparcial\entidad2.c
+	<stdio.h>
+	<stdlib.h>
+	"entidad2.h"
+	<string.h>
+	"validar.h"
+	"entidad1.h"
+	"informes.h"
+
+1507397920 c:\users\matias.camara\desktop\esqueletoparcial2\1erparcial\entidad2.h
+	"entidad1.h"
+
+1507730250 c:\users\matias.camara\desktop\esqueletoparcial2\1erparcial\informes.h
+
+1507730250 source:c:\users\matias.camara\desktop\esqueletoparcial2\1erparcial\validar.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validar.h"
+
+1507730250 source:c:\users\matias.camara\desktop\esqueletoparcial2\1erparcial\informes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Pantalla.h"
+	"Contrataciones.h"
+	"informes.h"
+	"validar.h"
+
+1507729836 source:c:\users\matias.camara\desktop\esqueletoparcial2\1erparcial\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Pantalla.h"
+	"Contrataciones.h"
+	"validar.h"
+	"informes.h"
+
+1507730250 source:c:\users\matias.camara\desktop\esqueletoparcial2\1erparcial\contrataciones.c
+	<stdio.h>
+	<stdlib.h>
+	"Contrataciones.h"
+	<string.h>
+	"validar.h"
+	"Pantalla.h"
+	"informes.h"
+
+1507730250 c:\users\matias.camara\desktop\esqueletoparcial2\1erparcial\contrataciones.h
+	"Pantalla.h"
+
+1507730250 c:\users\matias.camara\desktop\esqueletoparcial2\1erparcial\pantalla.h
+
+1507730250 source:c:\users\matias.camara\desktop\esqueletoparcial2\1erparcial\pantalla.c
+	<stdio.h>
+	<stdlib.h>
+	"Pantalla.h"
+	"Contrataciones.h"
+	<string.h>
+	"validar.h"
+
+1507730250 source:c:\users\matias.camara\desktop\mariano\github\1erparcial(terminado)\contrataciones.c
+	<stdio.h>
+	<stdlib.h>
+	"Contrataciones.h"
+	<string.h>
+	"validar.h"
+	"Pantalla.h"
+	"informes.h"
+
+1507730250 c:\users\matias.camara\desktop\mariano\github\1erparcial(terminado)\contrataciones.h
+	"Pantalla.h"
+
+1507730250 c:\users\matias.camara\desktop\mariano\github\1erparcial(terminado)\pantalla.h
+
+1507730250 c:\users\matias.camara\desktop\mariano\github\1erparcial(terminado)\validar.h
+
+1507730250 c:\users\matias.camara\desktop\mariano\github\1erparcial(terminado)\informes.h
+
+1507730250 source:c:\users\matias.camara\desktop\mariano\github\1erparcial(terminado)\informes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"Pantalla.h"
+	"Contrataciones.h"
+	"informes.h"
+	"validar.h"
+
+1507729836 source:c:\users\matias.camara\desktop\mariano\github\1erparcial(terminado)\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Pantalla.h"
+	"Contrataciones.h"
+	"validar.h"
+	"informes.h"
+
+1507730250 source:c:\users\matias.camara\desktop\mariano\github\1erparcial(terminado)\pantalla.c
+	<stdio.h>
+	<stdlib.h>
+	"Pantalla.h"
+	"Contrataciones.h"
+	<string.h>
+	"validar.h"
+
+1507730250 source:c:\users\matias.camara\desktop\mariano\github\1erparcial(terminado)\validar.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"validar.h"
+
