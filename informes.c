@@ -35,7 +35,7 @@ int inf_listarPantallas (sPantalla* listaPantallas,int lenListaPantallas)
                        listaPantallas[index].precio,
                        listaPantallas[index].direccion,
                        listaPantallas[index].tipoPantalla);
-                       retorno = 0;
+                retorno = 0;
             }
         }
         printf("\n*************************************************************\n");
@@ -46,7 +46,7 @@ int inf_listarPantallas (sPantalla* listaPantallas,int lenListaPantallas)
         }
 
     }
-return retorno;
+    return retorno;
 }
 
 /** \brief Imprime una lista de pantallas cargadas que tienen contrataciones a partir de un CUIT
@@ -72,25 +72,28 @@ int inf_listarPantallasContratadas (sPantalla* listaPantallas,sContrataciones* l
     {
         for (indexContrataciones=0; indexContrataciones<lenListaContrataciones; indexContrataciones++)
         {
-            if ( strcmp(cuit, listaContrataciones[indexContrataciones].cuitCliente) == 0)
+            if (listaContrataciones[indexContrataciones].flagOcupado == CONTRATACIONES_OCUPADO)
             {
-                contadorContrataciones++;
-                int idPantalla = listaContrataciones[indexContrataciones].idPantalla;
-
-                for (indexPantalla=0; indexPantalla<lenListaPantallas; indexPantalla++)
+                if ( strcmp(cuit, listaContrataciones[indexContrataciones].cuitCliente) == 0)
                 {
-                    if(listaPantallas[indexPantalla].flagOcupado == PANTALLA_OCUPADO)
-                    {
-                        if (idPantalla == listaPantallas[indexPantalla].id)
-                        {
+                    contadorContrataciones++;
+                    int idPantalla = listaContrataciones[indexContrataciones].idPantalla;
 
-                            printf("\nID Pantalla: %d\nNombre: %s\nPrecio: %.2f\nDireccion: %s\nTipo (0-LCD // 1-LED): %d\nDias contratados: %d\n",listaPantallas[indexPantalla].id,
-                                   listaPantallas[indexPantalla].nombrePantalla,
-                                   listaPantallas[indexPantalla].precio,
-                                   listaPantallas[indexPantalla].direccion,
-                                   listaPantallas[indexPantalla].tipoPantalla,
-                                   listaContrataciones[indexContrataciones].dias);
-                            retorno = 0;
+                    for (indexPantalla=0; indexPantalla<lenListaPantallas; indexPantalla++)
+                    {
+                        if(listaPantallas[indexPantalla].flagOcupado == PANTALLA_OCUPADO)
+                        {
+                            if (idPantalla == listaPantallas[indexPantalla].id)
+                            {
+
+                                printf("\nID Pantalla: %d\nNombre: %s\nPrecio: %.2f\nDireccion: %s\nTipo (0-LCD // 1-LED): %d\nDias contratados: %d\n",listaPantallas[indexPantalla].id,
+                                       listaPantallas[indexPantalla].nombrePantalla,
+                                       listaPantallas[indexPantalla].precio,
+                                       listaPantallas[indexPantalla].direccion,
+                                       listaPantallas[indexPantalla].tipoPantalla,
+                                       listaContrataciones[indexContrataciones].dias);
+                                retorno = 0;
+                            }
                         }
                     }
                 }
@@ -255,9 +258,9 @@ int inf_listarClientesConImportes (sPantalla* listaPantallas,sContrataciones* li
                 int j;
                 for(j=indexContrataciones; j<lenListaContrataciones; j++)
                 {
-                    if (listaContrataciones[indexContrataciones].flagOcupado == CONTRATACIONES_OCUPADO)
+                    if (listaContrataciones[j].flagOcupado == CONTRATACIONES_OCUPADO)
                     {
-                         if ( strcmp(bufferCuit, listaContrataciones[j].cuitCliente) == 0)
+                        if ( strcmp(bufferCuit, listaContrataciones[j].cuitCliente) == 0)
                         {
                             contadorCuit++;
                         }
@@ -280,21 +283,24 @@ int inf_listarClientesConImportes (sPantalla* listaPantallas,sContrataciones* li
                     printf("\nCUIT Cliente: %s\nNombre: %s\nCantidad contrataciones: %d", bufferCuit, listaContrataciones[indexContrataciones].nombre, contadorContrataciones);
                     for (i=0; i<lenListaContrataciones; i++)
                     {
-                        if ( strcmp(bufferCuit, listaContrataciones[indexContrataciones].cuitCliente) == 0)
+                        if (listaContrataciones[indexContrataciones].flagOcupado == CONTRATACIONES_OCUPADO)
                         {
-                            int idPantalla = listaContrataciones[i].idPantalla;
-
-                            for (indexPantalla=0; indexPantalla<lenListaPantallas; indexPantalla++)
+                            if ( strcmp(bufferCuit, listaContrataciones[indexContrataciones].cuitCliente) == 0)
                             {
-                                if(listaPantallas[indexPantalla].flagOcupado == PANTALLA_OCUPADO)
+                                int idPantalla = listaContrataciones[i].idPantalla;
+
+                                for (indexPantalla=0; indexPantalla<lenListaPantallas; indexPantalla++)
                                 {
-                                    if (idPantalla == listaPantallas[indexPantalla].id)
+                                    if(listaPantallas[indexPantalla].flagOcupado == PANTALLA_OCUPADO)
                                     {
-                                        if(listaContrataciones[i].flagOcupado == CONTRATACIONES_OCUPADO && strcmp(bufferCuit, listaContrataciones[i].cuitCliente) == 0)
+                                        if (idPantalla == listaPantallas[indexPantalla].id)
                                         {
-                                            precioFinal = listaPantallas[indexPantalla].precio * listaContrataciones[i].dias;
-                                            printf("\nTOTAL: $%.2f",precioFinal);
-                                            retorno = 0;
+                                            if(listaContrataciones[i].flagOcupado == CONTRATACIONES_OCUPADO && strcmp(bufferCuit, listaContrataciones[i].cuitCliente) == 0)
+                                            {
+                                                precioFinal = listaPantallas[indexPantalla].precio * listaContrataciones[i].dias;
+                                                printf("\nTOTAL: $%.2f",precioFinal);
+                                                retorno = 0;
+                                            }
                                         }
                                     }
                                 }
@@ -339,11 +345,11 @@ int inf_listarClientesConMayorImporte (sPantalla* listaPantallas,sContrataciones
             if (listaContrataciones[i].flagOcupado==CONTRATACIONES_OCUPADO)
             {
                 contadorOcupado++;
-                for (j=i+1;j<lenListaContrataciones;j++)
+                for (j=i+1; j<lenListaContrataciones; j++)
                 {
-                    if (listaContrataciones[i].flagOcupado==CONTRATACIONES_OCUPADO)
+                    if (listaContrataciones[j].flagOcupado==CONTRATACIONES_OCUPADO)
                     {
-                       if (strcmp(listaContrataciones[i].cuitCliente, listaContrataciones[j].cuitCliente)== 0)
+                        if (strcmp(listaContrataciones[i].cuitCliente, listaContrataciones[j].cuitCliente)== 0)
                         {
                             contadorClientesRepetidos++;
                         }
@@ -355,7 +361,9 @@ int inf_listarClientesConMayorImporte (sPantalla* listaPantallas,sContrataciones
             }
         }
         contadorClientes = contadorOcupado - contadorClientesRepetidos;
-
+        printf("\nocu: %d\n",contadorOcupado);
+        printf("repe: %d\n",contadorClientesRepetidos);
+        printf("total: %d\n",contadorClientes);
         char arrayCuitClientes[contadorClientes][50];
         float arrayAcumuladorImporte[contadorClientes];
         char bufferCuit[50];
@@ -407,13 +415,15 @@ int inf_listarClientesConMayorImporte (sPantalla* listaPantallas,sContrataciones
                 strncpy(bufferCuit,arrayCuitClientes[i],50);
                 for (k=0; k<lenListaContrataciones; k++)
                 {
-                    if (strcmp(bufferCuit, listaContrataciones[k].cuitCliente) == 0)
+                    if (listaContrataciones[k].flagOcupado==CONTRATACIONES_OCUPADO)
                     {
-                        int idPantalla = listaContrataciones[k].idPantalla;
-                        float total = listaContrataciones[k].dias * listaPantallas[idPantalla].precio;
-                        arrayAcumuladorImporte[i] = arrayAcumuladorImporte[i] + total;
+                        if (strcmp(bufferCuit, listaContrataciones[k].cuitCliente) == 0)
+                        {
+                            int idPantalla = listaContrataciones[k].idPantalla;
+                            float total = listaContrataciones[k].dias * listaPantallas[idPantalla].precio;
+                            arrayAcumuladorImporte[i] = arrayAcumuladorImporte[i] + total;
+                        }
                     }
-
                 }
             }
         }

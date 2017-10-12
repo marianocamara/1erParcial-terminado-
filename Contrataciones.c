@@ -221,19 +221,19 @@ int contra_modificarDiasContratados (sContrataciones* listaContrataciones, sPant
                 if (val_getUnsignedInt(bufferIdModificar,"\nIngrese ID de la pantalla a modificar:\n","\nIngese un ID valido\n",2,50) != -1)
                 {
 
-                        if (val_getUnsignedInt(bufferDias,"Ingrese la nueva cantidad de dias que desea contratar la pantalla:\n","\nIngrese un numero valido:\n",2,50)!= -1)
+                    if (val_getUnsignedInt(bufferDias,"Ingrese la nueva cantidad de dias que desea contratar la pantalla:\n","\nIngrese un numero valido:\n",2,50)!= -1)
+                    {
+                        int i;
+                        for(i=0; i<lenListaContrataciones; i++)
                         {
-                            int i;
-                            for(i=0;i<lenListaContrataciones;i++)
-                            {
                             if (strcmp(bufferCuit, listaContrataciones[i].cuitCliente)==0 && listaContrataciones[i].idPantalla == atoi(bufferIdModificar))
                             {
-                            listaContrataciones[i].dias = atoi(bufferDias);
-                            printf("Se ha modificado la cantidad de dias de la contratacion.");
-                            retorno = 0;
-                            }
+                                listaContrataciones[i].dias = atoi(bufferDias);
+                                printf("Se ha modificado la cantidad de dias de la contratacion.");
+                                retorno = 0;
                             }
                         }
+                    }
 
                     else
                     {
@@ -286,35 +286,45 @@ int contra_bajaContratacion(sContrataciones* listaContrataciones, int lenListaCo
  *
  */
 int contra_bajaContratacionPorCuit (sContrataciones* listaContrataciones, sPantalla* listaPantallas, int lenListaContrataciones, int lenListaPantallas)
+{
+    int retorno = -1;
+
+    if(listaPantallas != NULL && lenListaPantallas > 0 && listaContrataciones != NULL && lenListaContrataciones > 0 )
     {
-        int retorno = -1;
 
-        if(listaPantallas != NULL && lenListaPantallas > 0 && listaContrataciones != NULL && lenListaContrataciones > 0 )
+        char bufferCuit[50];
+        char bufferIdModificar[50];
+
+        if(val_getCuit(bufferCuit,"\nIngrese su CUIT (formato xx-documento-x): \n","\nIngrese un numero valido\n",2,50)==0)
         {
-
-            char bufferCuit[50];
-            char bufferIdModificar[50];
-
-            if(val_getCuit(bufferCuit,"\nIngrese su CUIT (formato xx-documento-x): \n","\nIngrese un numero valido\n",2,50)==0)
+            if (inf_listarPantallasContratadas(listaPantallas,listaContrataciones,lenListaPantallas,lenListaContrataciones,bufferCuit)!= -1)
             {
-                if (inf_listarPantallasContratadas(listaPantallas,listaContrataciones,lenListaPantallas,lenListaContrataciones,bufferCuit)!= -1)
+                if (val_getUnsignedInt(bufferIdModificar,"\nIngrese ID de la pantalla cuya contratacion desea cancelar:\n","\nIngese un ID valido\n",2,50) != -1)
                 {
-                    if (val_getUnsignedInt(bufferIdModificar,"\nIngrese ID de la pantalla cuya contratacion desea cancelar:\n","\nIngese un ID valido\n",2,50) != -1)
+                    int i;
+                    int contadorBajas=0;
+                    for(i=0; i<lenListaContrataciones; i++)
                     {
-                        int i;
-                        for(i=0;i<lenListaContrataciones;i++)
+                        if (listaContrataciones[i].flagOcupado == CONTRATACIONES_OCUPADO)
                         {
                             if (strcmp(bufferCuit, listaContrataciones[i].cuitCliente)==0 && listaContrataciones[i].idPantalla == atoi(bufferIdModificar))
                             {
                                 listaContrataciones[i].flagOcupado = CONTRATACIONES_LIBRE;
+                                contadorBajas ++;
                                 printf("\nSe ha cancelado la contratacion de la pantalla seleccionada.");
                                 retorno = 0;
                             }
                         }
+
+                    }
+                    if (contadorBajas==0)
+                    {
+                        printf("El ID no corresponde a ninguna pantalla contratada");
                     }
                 }
             }
         }
-        return retorno;
-
     }
+    return retorno;
+
+}
