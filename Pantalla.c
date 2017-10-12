@@ -41,7 +41,7 @@ int pant_generarProximoId (void)
 }
 
 /** \brief busca el proximo index libre donde cargar la entidad
- * \param puntero listaPantallas de entidad
+ * \param puntero array listaPantallas de estructura sPantalla
  * \param lenLista int Longitud del listaPantallas
  * \return int el primer index libre encontrado // -1 Error en parametros pasados o no hay posicion libre
  *
@@ -65,6 +65,13 @@ int pant_buscarPosicionLibre (sPantalla* listaPantallas,int lenLista)
     return retorno;
 }
 
+/** \brief carga datos de prueba en la estructura pantalla
+ *
+ * \param array de estructura Pantalla
+ * \param longitud array pantalla
+ * \return
+ *
+ */
 
 void pant_cargarDatosPrueba (sPantalla* listaPantallas, int lenListaPantallas)
 {
@@ -96,7 +103,7 @@ void pant_cargarDatosPrueba (sPantalla* listaPantallas, int lenListaPantallas)
 
 /** \brief Carga todos los campos de la entidad en un index vacio y genera su id, validando datos ingresados en cada caso
  *
- * \param puntero listaPantallas de entidad
+ * \param puntero array listaPantallas de entidad
  * \param lenLista int Longitud del listaPantallas
  * \return 0 si pudo cargar los datos correctanmente, -1 error de carga o de parametros pasados
  *
@@ -180,11 +187,10 @@ int pant_buscarIndicePorId(sPantalla* listaPantallas, int lenLista, int id)
     return retorno;
 }
 
-/** \brief busca el index del id pasado como parametro y modifica los campos en ese index
+/** \brief pide un ID de pantalla y permite modificar datos de esa pantalla
  *
- * \param puntero listaPantallas de entidad
+ * \param puntero listaPantallas
  * \param lenLista int Longitud del listaPantallas
- * \param int id para buscar su index
  * \return 0 si pudo modificar los datos correctanmente, -1 error de carga o de parametros pasados
  *
  */

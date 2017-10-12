@@ -118,7 +118,7 @@
 	<string.h>
 	"validar.h"
 
-1507730250 source:c:\users\matias.camara\desktop\mariano\github\1erparcial-terminado-\contrataciones.c
+1507819670 source:c:\users\matias.camara\desktop\mariano\github\1erparcial-terminado-\contrataciones.c
 	<stdio.h>
 	<stdlib.h>
 	"Contrataciones.h"
@@ -127,7 +127,7 @@
 	"Pantalla.h"
 	"informes.h"
 
-1507730250 c:\users\matias.camara\desktop\mariano\github\1erparcial-terminado-\contrataciones.h
+1507818965 c:\users\matias.camara\desktop\mariano\github\1erparcial-terminado-\contrataciones.h
 	"Pantalla.h"
 
 1507730250 c:\users\matias.camara\desktop\mariano\github\1erparcial-terminado-\pantalla.h
@@ -136,7 +136,7 @@
 
 1507754880 c:\users\matias.camara\desktop\mariano\github\1erparcial-terminado-\informes.h
 
-1507729836 source:c:\users\matias.camara\desktop\mariano\github\1erparcial-terminado-\main.c
+1507754880 source:c:\users\matias.camara\desktop\mariano\github\1erparcial-terminado-\main.c
 	<stdio.h>
 	<stdlib.h>
 	"Pantalla.h"
@@ -144,7 +144,7 @@
 	"validar.h"
 	"informes.h"
 
-1507730250 source:c:\users\matias.camara\desktop\mariano\github\1erparcial-terminado-\pantalla.c
+1507819669 source:c:\users\matias.camara\desktop\mariano\github\1erparcial-terminado-\pantalla.c
 	<stdio.h>
 	<stdlib.h>
 	"Pantalla.h"
@@ -152,7 +152,7 @@
 	<string.h>
 	"validar.h"
 
-1507754799 source:c:\users\matias.camara\desktop\mariano\github\1erparcial-terminado-\informes.c
+1507818002 source:c:\users\matias.camara\desktop\mariano\github\1erparcial-terminado-\informes.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

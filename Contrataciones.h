@@ -24,7 +24,6 @@ int contra_init (sContrataciones* listaContrataciones, int lenlistaContratacione
 int contra_generarProximoId ();
 int contra_buscarPosicionLibre (sContrataciones* listaContrataciones,int lenlistaContrataciones);
 int contra_alta(sContrataciones* listaContrataciones, sPantalla* listaPantallas, int lenlistaContrataciones, int lenListaPantallas);
-int contra_buscarIndicePorIdPantalla(sContrataciones* listaContrataciones,int lenlistaContrataciones, int id);
 int contra_modificarDiasContratados (sContrataciones* listaContrataciones, sPantalla* listaPantallas, int lenListaContrataciones, int lenListaPantallas);
 int contra_bajaContratacionPorCuit (sContrataciones* listaContrataciones, sPantalla* listaPantallas, int lenListaContrataciones, int lenListaPantallas);
 void contra_cargarDatosPrueba (sContrataciones* listaContrataciones, int lenListaContrataciones);

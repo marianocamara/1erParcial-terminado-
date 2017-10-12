@@ -107,7 +107,15 @@ int inf_listarPantallasContratadas (sPantalla* listaPantallas,sContrataciones* l
     return retorno;
 }
 
-
+/** \brief Imprime una lista de las contrataciones activas
+ *
+ * \param array de estructura pantalla
+ * \param array de estructura contrataciones
+ * \param  longitud del array de estructura pantalla
+ * \param  longitud del array de estructura contrataciones
+ * \return -1 error en parametros | 0 OK
+ *
+ */
 int inf_listarContrataciones (sPantalla* listaPantallas,sContrataciones* listaContrataciones, int lenListaPantallas,int lenListaContrataciones)
 {
     int retorno = -1;
@@ -131,7 +139,7 @@ int inf_listarContrataciones (sPantalla* listaPantallas,sContrataciones* listaCo
                     {
                         if (idPantalla == listaPantallas[indexPantalla].id)
                         {
-                            printf("\nNombre: %s\nNombre video: %s\nDias: %d\nCUIT: %s\n",listaPantallas[indexPantalla].nombrePantalla,
+                            printf("\nNombre pantalla: %s\nNombre video: %s\nDias: %d\nCUIT: %s\n",listaPantallas[indexPantalla].nombrePantalla,
                                    listaContrataciones[indexContrataciones].nombreVideo,
                                    listaContrataciones[indexContrataciones].dias,
                                    listaContrataciones[indexContrataciones].cuitCliente);
@@ -153,6 +161,15 @@ int inf_listarContrataciones (sPantalla* listaPantallas,sContrataciones* listaCo
     return retorno;
 }
 
+/** \brief Imprime una lista de las contrataciones con sus importes a partir del ingreso de un cuit
+ *
+ * \param array de estructura pantalla
+ * \param array de estructura contrataciones
+ * \param  longitud del array de estructura pantalla
+ * \param  longitud del array de estructura contrataciones
+ * \return -1 error en parametros | 0 OK
+ *
+ */
 int inf_listarImportePantallasContratadasPorCuit (sPantalla* listaPantallas,sContrataciones* listaContrataciones, int lenListaPantallas,int lenListaContrataciones)
 {
     int retorno = -1;
@@ -205,7 +222,15 @@ int inf_listarImportePantallasContratadasPorCuit (sPantalla* listaPantallas,sCon
     return retorno;
 }
 
-
+/** \brief Imprime una lista de los clientes con contrataciones e importe a pagar por cada una
+ *
+ * \param array de estructura pantalla
+ * \param array de estructura contrataciones
+ * \param  longitud del array de estructura pantalla
+ * \param  longitud del array de estructura contrataciones
+ * \return -1 error en parametros | 0 OK
+ *
+ */
 int inf_listarClientesConImportes (sPantalla* listaPantallas,sContrataciones* listaContrataciones, int lenListaPantallas,int lenListaContrataciones)
 {
     int retorno = -1;
@@ -230,17 +255,25 @@ int inf_listarClientesConImportes (sPantalla* listaPantallas,sContrataciones* li
                 int j;
                 for(j=indexContrataciones; j<lenListaContrataciones; j++)
                 {
-                    if ( strcmp(bufferCuit, listaContrataciones[j].cuitCliente) == 0)
+                    if (listaContrataciones[indexContrataciones].flagOcupado == CONTRATACIONES_OCUPADO)
                     {
-                        contadorCuit++;
+                         if ( strcmp(bufferCuit, listaContrataciones[j].cuitCliente) == 0)
+                        {
+                            contadorCuit++;
+                        }
                     }
+
                 }
                 for(i=0; i<lenListaContrataciones; i++)
                 {
-                    if ( strcmp(bufferCuit, listaContrataciones[i].cuitCliente) == 0)
+                    if (listaContrataciones[indexContrataciones].flagOcupado == CONTRATACIONES_OCUPADO)
                     {
-                        contadorContrataciones++;
+                        if ( strcmp(bufferCuit, listaContrataciones[i].cuitCliente) == 0)
+                        {
+                            contadorContrataciones++;
+                        }
                     }
+
                 }
                 if(contadorCuit == 1)
                 {
@@ -278,11 +311,22 @@ int inf_listarClientesConImportes (sPantalla* listaPantallas,sContrataciones* li
     return retorno;
 }
 
+/** \brief Imprime los datos del cliente con el importe a pagar mas alto
+ *
+ * \param array de estructura pantalla
+ * \param array de estructura contrataciones
+ * \param  longitud del array de estructura pantalla
+ * \param  longitud del array de estructura contrataciones
+ * \return -1 error en parametros | 0 OK
+ *
+ */
 int inf_listarClientesConMayorImporte (sPantalla* listaPantallas,sContrataciones* listaContrataciones, int lenListaPantallas,int lenListaContrataciones)
 {
     int retorno = -1;
-    int i;
-    int contadorClientes = 1;
+    int i,k,j;
+    int contadorClientesRepetidos = 0;
+    int contadorOcupado = 0;
+    int contadorClientes;
     if(listaPantallas != NULL && lenListaPantallas > 0 && listaContrataciones != NULL && lenListaContrataciones > 0 )
     {
         printf("*************************************************************\n");
@@ -294,12 +338,23 @@ int inf_listarClientesConMayorImporte (sPantalla* listaPantallas,sContrataciones
         {
             if (listaContrataciones[i].flagOcupado==CONTRATACIONES_OCUPADO)
             {
-                if (strcmp(listaContrataciones[0].cuitCliente, listaContrataciones[i].cuitCliente)!= 0)
+                contadorOcupado++;
+                for (j=i+1;j<lenListaContrataciones;j++)
                 {
-                    contadorClientes++;
+                    if (listaContrataciones[i].flagOcupado==CONTRATACIONES_OCUPADO)
+                    {
+                       if (strcmp(listaContrataciones[i].cuitCliente, listaContrataciones[j].cuitCliente)== 0)
+                        {
+                            contadorClientesRepetidos++;
+                        }
+                    }
+
+
                 }
+
             }
         }
+        contadorClientes = contadorOcupado - contadorClientesRepetidos;
 
         char arrayCuitClientes[contadorClientes][50];
         float arrayAcumuladorImporte[contadorClientes];
@@ -315,11 +370,10 @@ int inf_listarClientesConMayorImporte (sPantalla* listaPantallas,sContrataciones
         {
             arrayAcumuladorImporte[i] = 0;
         }
-        int i,k;
-        int j=0;
+
 
         //copio cuits al array
-        for (i=0; i<lenListaContrataciones; i++)
+        for (i=0, j=0; i<lenListaContrataciones; i++,j++)
         {
             if (listaContrataciones[i].flagOcupado==CONTRATACIONES_OCUPADO)
             {
@@ -341,7 +395,7 @@ int inf_listarClientesConMayorImporte (sPantalla* listaPantallas,sContrataciones
                 {
                     strncpy(arrayCuitClientes[j],bufferCuit,50);
                 }
-                j++;
+
             }
         }
 
